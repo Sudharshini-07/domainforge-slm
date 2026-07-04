@@ -1,0 +1,80 @@
+project:
+  name: "DomainForge-SLM"
+  version: "0.1.0"
+
+domain:
+  name: "AI/ML Engineering"
+  description: >
+    Technical knowledge and reasoning for machine learning,
+    deep learning, transformer architectures, large language models,
+    retrieval-augmented generation, model evaluation, and MLOps.
+
+  included_topics:
+    - machine_learning
+    - deep_learning
+    - transformer_architectures
+    - large_language_models
+    - fine_tuning_and_peft
+    - retrieval_augmented_generation
+    - llm_evaluation
+    - mlops_and_deployment
+
+  excluded_topics:
+    - general_programming
+    - frontend_development
+    - cybersecurity
+    - medical_diagnosis
+    - legal_advice
+    - unrelated_general_knowledge
+
+task_taxonomy:
+  conceptual_explanation:
+    description: "Explain technical concepts accurately and clearly."
+    example: "Why does self-attention scale quadratically with sequence length?"
+
+  architecture_comparison:
+    description: "Compare models, architectures, and engineering approaches."
+    example: "Compare LoRA and full fine-tuning for adapting a 3B parameter model."
+
+  technical_reasoning:
+    description: "Reason through design choices and trade-offs."
+    example: "Why might increasing chunk size reduce retrieval precision?"
+
+  debugging_and_diagnosis:
+    description: "Diagnose failures in ML and LLM systems."
+    example: "A RAG system retrieves relevant documents but generates unsupported claims. Diagnose likely causes."
+
+  configuration_reasoning:
+    description: "Reason about training and inference configurations."
+    example: "What are the likely effects of increasing gradient accumulation steps?"
+
+  evidence_grounded_answering:
+    description: "Answer using supplied evidence without unsupported claims."
+    example: "Given retrieved passages, answer the question and identify insufficient evidence."
+
+evaluation_dimensions:
+  - domain_accuracy
+  - technical_reasoning
+  - instruction_following
+  - hallucination_rate
+  - evidence_faithfulness
+  - citation_correctness
+  - latency
+  - peak_memory
+  - catastrophic_forgetting
+
+system_variants:
+  - id: "A"
+    name: "Base SLM"
+
+  - id: "B"
+    name: "Base SLM + RAG"
+
+  - id: "C"
+    name: "DAPT SLM"
+
+  - id: "D"
+    name: "DAPT + Instruction-Tuned SLM"
+
+  - id: "E"
+    name: "DAPT + Instruction-Tuned SLM + RAG"

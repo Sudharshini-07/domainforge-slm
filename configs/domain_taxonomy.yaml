@@ -1,0 +1,261 @@
+taxonomy_version: "0.1.0"
+
+domains:
+
+  machine_learning:
+    description: "Classical machine learning methods, workflows, and evaluation."
+    subdomains:
+      supervised_learning:
+        topics:
+          - linear_regression
+          - logistic_regression
+          - decision_trees
+          - random_forests
+          - gradient_boosting
+          - support_vector_machines
+          - knn
+          - naive_bayes
+
+      unsupervised_learning:
+        topics:
+          - kmeans
+          - hierarchical_clustering
+          - dbscan
+          - dimensionality_reduction
+          - anomaly_detection
+
+      feature_engineering:
+        topics:
+          - encoding
+          - scaling
+          - feature_selection
+          - feature_transformation
+          - leakage_prevention
+
+      model_evaluation:
+        topics:
+          - cross_validation
+          - classification_metrics
+          - regression_metrics
+          - calibration
+          - class_imbalance
+
+  deep_learning:
+    description: "Neural network architectures, optimization, and training."
+    subdomains:
+      neural_network_fundamentals:
+        topics:
+          - forward_propagation
+          - backpropagation
+          - activation_functions
+          - loss_functions
+          - weight_initialization
+
+      optimization:
+        topics:
+          - sgd
+          - momentum
+          - adam
+          - learning_rate_scheduling
+          - gradient_clipping
+
+      regularization:
+        topics:
+          - dropout
+          - weight_decay
+          - batch_normalization
+          - early_stopping
+
+      architectures:
+        topics:
+          - cnn
+          - rnn
+          - lstm
+          - gru
+          - autoencoders
+
+  transformers:
+    description: "Transformer architecture and attention-based modeling."
+    subdomains:
+      attention_mechanisms:
+        topics:
+          - scaled_dot_product_attention
+          - self_attention
+          - cross_attention
+          - multi_head_attention
+          - causal_attention
+
+      architecture:
+        topics:
+          - encoder_only
+          - decoder_only
+          - encoder_decoder
+          - residual_connections
+          - layer_normalization
+          - feed_forward_networks
+
+      sequence_representation:
+        topics:
+          - positional_encoding
+          - learned_position_embeddings
+          - rotary_position_embeddings
+          - attention_masks
+
+      inference_mechanics:
+        topics:
+          - autoregressive_decoding
+          - kv_cache
+          - greedy_decoding
+          - beam_search
+          - temperature
+          - top_k_sampling
+          - top_p_sampling
+
+  llm_engineering:
+    description: "Training, adaptation, alignment, and efficient engineering of LLMs."
+    subdomains:
+      pretraining:
+        topics:
+          - causal_language_modeling
+          - masked_language_modeling
+          - tokenization
+          - data_mixture
+          - scaling_behavior
+
+      adaptation:
+        topics:
+          - continued_pretraining
+          - domain_adaptive_pretraining
+          - supervised_fine_tuning
+          - instruction_tuning
+
+      peft:
+        topics:
+          - lora
+          - qlora
+          - adapters
+          - prompt_tuning
+          - rank_selection
+
+      alignment:
+        topics:
+          - preference_optimization
+          - rlhf
+          - dpo
+          - reward_modeling
+
+  retrieval_systems:
+    description: "Information retrieval and retrieval-augmented generation."
+    subdomains:
+      document_processing:
+        topics:
+          - chunking
+          - metadata
+          - document_parsing
+          - semantic_segmentation
+
+      sparse_retrieval:
+        topics:
+          - inverted_indexes
+          - tf_idf
+          - bm25
+
+      dense_retrieval:
+        topics:
+          - embeddings
+          - bi_encoders
+          - vector_similarity
+          - approximate_nearest_neighbors
+
+      hybrid_retrieval:
+        topics:
+          - score_fusion
+          - reciprocal_rank_fusion
+          - query_expansion
+
+      reranking:
+        topics:
+          - cross_encoders
+          - reranker_models
+          - candidate_reranking
+
+      rag:
+        topics:
+          - context_construction
+          - grounded_generation
+          - retrieval_failure
+          - generation_failure
+          - citation_grounding
+
+  evaluation_reliability:
+    description: "Evaluation, robustness, grounding, and reliability of AI systems."
+    subdomains:
+      predictive_evaluation:
+        topics:
+          - accuracy
+          - precision
+          - recall
+          - f1_score
+          - roc_auc
+          - calibration
+
+      llm_evaluation:
+        topics:
+          - exact_match
+          - semantic_similarity
+          - llm_as_judge
+          - pairwise_evaluation
+          - human_evaluation
+
+      reliability:
+        topics:
+          - hallucination
+          - faithfulness
+          - factuality
+          - uncertainty
+          - robustness
+
+      retrieval_evaluation:
+        topics:
+          - recall_at_k
+          - precision_at_k
+          - mean_reciprocal_rank
+          - ndcg
+
+  mlops_deployment:
+    description: "Productionization, serving, monitoring, and optimization."
+    subdomains:
+      experiment_management:
+        topics:
+          - experiment_tracking
+          - reproducibility
+          - model_registry
+          - artifact_versioning
+
+      serving:
+        topics:
+          - batch_inference
+          - online_inference
+          - api_serving
+          - dynamic_batching
+
+      optimization:
+        topics:
+          - quantization
+          - pruning
+          - distillation
+          - mixed_precision
+
+      monitoring:
+        topics:
+          - data_drift
+          - concept_drift
+          - performance_monitoring
+          - latency_monitoring
+
+      infrastructure:
+        topics:
+          - containers
+          - gpu_inference
+          - distributed_training
+          - checkpointing

@@ -1,0 +1,143 @@
+benchmark_version: "0.1.0"
+
+objective: >
+  Evaluate whether domain adaptation, instruction tuning, and retrieval
+  improve technical knowledge and reasoning across AI/ML Engineering
+  while controlling for benchmark contamination and general capability loss.
+
+target_total_items: 420
+
+domain_allocation:
+
+  machine_learning:
+    target_items: 60
+    rationale: >
+      Covers classical supervised and unsupervised learning,
+      feature engineering, and predictive evaluation.
+
+  deep_learning:
+    target_items: 60
+    rationale: >
+      Covers neural network fundamentals, optimization,
+      regularization, and major architectures.
+
+  transformers:
+    target_items: 70
+    rationale: >
+      Higher allocation because transformer understanding is central
+      to the domain-adaptive SLM project.
+
+  llm_engineering:
+    target_items: 80
+    rationale: >
+      Highest allocation because LLM training, adaptation, PEFT,
+      and alignment are core flagship capabilities.
+
+  retrieval_systems:
+    target_items: 60
+    rationale: >
+      Covers sparse, dense, hybrid retrieval, reranking, and RAG.
+
+  evaluation_reliability:
+    target_items: 50
+    rationale: >
+      Covers model evaluation, hallucination, faithfulness,
+      robustness, and retrieval evaluation.
+
+  mlops_deployment:
+    target_items: 40
+    rationale: >
+      Covers experiment management, serving, optimization,
+      monitoring, and infrastructure.
+
+task_type_targets:
+
+  conceptual_explanation:
+    target_percentage: 20
+
+  architecture_comparison:
+    target_percentage: 15
+
+  technical_reasoning:
+    target_percentage: 25
+
+  debugging_and_diagnosis:
+    target_percentage: 15
+
+  configuration_reasoning:
+    target_percentage: 15
+
+  evidence_grounded_answering:
+    target_percentage: 10
+
+difficulty_targets:
+
+  basic:
+    target_percentage: 25
+
+  intermediate:
+    target_percentage: 45
+
+  advanced:
+    target_percentage: 30
+
+split_policy:
+
+  dev:
+    target_percentage: 20
+    purpose: >
+      Prompt development, evaluator debugging,
+      and pipeline validation.
+
+  test:
+    target_percentage: 60
+    purpose: >
+      Primary held-out evaluation set.
+
+  challenge:
+    target_percentage: 20
+    purpose: >
+      Hard reasoning, ambiguous failure analysis,
+      and multi-concept engineering scenarios.
+
+benchmark_principles:
+
+  - taxonomy_coverage
+  - task_diversity
+  - difficulty_balance
+  - source_provenance
+  - contamination_control
+  - held_out_test_integrity
+  - reproducible_scoring
+  - minimal_answer_leakage
+
+quality_requirements:
+
+  reference_answers:
+    require_key_points: true
+    require_technical_review: true
+
+  provenance:
+    required: true
+
+  contamination:
+    default_status: "not_checked"
+    clean_status_requires_verification: true
+
+  review:
+    initial_status: "draft"
+    approval_required_for_test: true
+
+reporting_requirements:
+
+  - overall_score
+  - score_by_domain
+  - score_by_subdomain
+  - score_by_task_type
+  - score_by_difficulty
+  - score_by_system_variant
+  - hallucination_rate
+  - evidence_faithfulness
+  - latency
+  - peak_memory
+  - catastrophic_forgetting

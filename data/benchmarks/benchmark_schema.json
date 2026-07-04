@@ -1,0 +1,166 @@
+{
+  "schema_version": "0.1.0",
+  "description": "Schema definition for DomainForge-SLM evaluation benchmark items",
+
+  "required_fields": [
+    "id",
+    "domain",
+    "subdomain",
+    "topic",
+    "task_type",
+    "difficulty",
+    "question",
+    "reference_answer",
+    "evaluation_method",
+    "source_provenance",
+    "contamination_status"
+  ],
+
+  "fields": {
+    "id": {
+      "type": "string",
+      "description": "Unique benchmark item identifier",
+      "example": "transformers_attention_001"
+    },
+
+    "domain": {
+      "type": "string",
+      "description": "Top-level domain from domain_taxonomy.yaml",
+      "example": "transformers"
+    },
+
+    "subdomain": {
+      "type": "string",
+      "description": "Subdomain from domain_taxonomy.yaml",
+      "example": "attention_mechanisms"
+    },
+
+    "topic": {
+      "type": "string",
+      "description": "Fine-grained topic from domain_taxonomy.yaml",
+      "example": "scaled_dot_product_attention"
+    },
+
+    "task_type": {
+      "type": "string",
+      "allowed_values": [
+        "conceptual_explanation",
+        "architecture_comparison",
+        "technical_reasoning",
+        "debugging_and_diagnosis",
+        "configuration_reasoning",
+        "evidence_grounded_answering"
+      ]
+    },
+
+    "difficulty": {
+      "type": "string",
+      "allowed_values": [
+        "basic",
+        "intermediate",
+        "advanced"
+      ]
+    },
+
+    "question": {
+      "type": "string",
+      "description": "Prompt presented to the evaluated model"
+    },
+
+    "reference_answer": {
+      "type": "string",
+      "description": "Expert-curated expected answer"
+    },
+
+    "key_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Atomic facts or reasoning points expected in a strong answer"
+    },
+
+    "evaluation_method": {
+      "type": "string",
+      "allowed_values": [
+        "exact_match",
+        "key_point_scoring",
+        "numeric_tolerance",
+        "structured_match",
+        "evidence_faithfulness",
+        "pairwise_judgment"
+      ]
+    },
+
+    "evidence_required": {
+      "type": "boolean",
+      "description": "Whether external evidence is supplied with the question"
+    },
+
+    "evidence": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "source_provenance": {
+      "type": "object",
+      "properties": {
+        "source_type": {
+          "type": "string"
+        },
+        "source_name": {
+          "type": "string"
+        },
+        "source_reference": {
+          "type": "string"
+        },
+        "license_or_usage_note": {
+          "type": "string"
+        }
+      }
+    },
+
+    "contamination_status": {
+      "type": "string",
+      "allowed_values": [
+        "clean",
+        "suspected",
+        "confirmed_overlap",
+        "not_checked"
+      ]
+    },
+
+    "split": {
+      "type": "string",
+      "allowed_values": [
+        "dev",
+        "test",
+        "challenge"
+      ]
+    },
+
+    "created_by": {
+      "type": "string",
+      "allowed_values": [
+        "human",
+        "human_with_ai_assistance",
+        "programmatic"
+      ]
+    },
+
+    "review_status": {
+      "type": "string",
+      "allowed_values": [
+        "draft",
+        "reviewed",
+        "approved",
+        "rejected"
+      ]
+    }
+  }
+}
