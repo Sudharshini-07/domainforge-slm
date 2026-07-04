@@ -1,0 +1,37 @@
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# VS Code local settings
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Model checkpoints and large ML artifacts
+checkpoints/
+outputs/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Local raw and processed datasets
+data/raw/
+data/interim/
+data/processed/
+
+# Logs
+logs/
+*.log
