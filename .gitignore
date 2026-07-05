@@ -35,3 +35,5 @@ data/processed/
 # Logs
 logs/
 *.log
+
+.pytest_tmp/
