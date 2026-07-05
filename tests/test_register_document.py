@@ -244,6 +244,26 @@ def test_manifest_record_contains_expected_metadata():
 
     assert len(record["content_hash"]) == 64
 
+    assert isinstance(
+        record["quality"]["score"],
+        float,
+        )
+
+    assert isinstance(
+        record["quality"]["passed"],
+        bool,
+        )
+
+    assert (
+        "repeated_line_ratio"
+        in record["quality"]["metrics"]
+        )
+
+    assert (
+        "minimum_words"
+        in record["quality"]["checks"]
+        )
+
 def test_manifest_rejects_invalid_usage_status():
     record = build_manifest_record(
         text="Self-attention computes contextual token representations.",
@@ -355,3 +375,27 @@ def test_manifest_rejects_invalid_artifact_path():
         match="Manifest validation failed",
     ):
         validate_manifest_record(record)
+def test_manifest_records_failed_quality_without_auto_rejection():
+    record = build_manifest_record(
+        text="tiny note",
+        source_family="curated_original_material",
+        source_name="DomainForge Original Corpus",
+        source_type="original_material",
+        source_reference="internal:low-quality-test",
+        title="Low Quality Test",
+        domain="transformers",
+        subdomain="attention_mechanisms",
+        topic="self_attention",
+    )
+
+    assert record["quality"]["passed"] is False
+
+    assert (
+        record["processing_status"]
+        == "registered"
+    )
+
+    assert (
+        record["usage_status"]
+        == "pending_review"
+    )

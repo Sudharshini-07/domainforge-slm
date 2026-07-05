@@ -1,0 +1,50 @@
+quality_version: "0.1.0"
+
+document_rules:
+
+  minimum_characters:
+    threshold: 300
+    enabled: true
+
+  minimum_words:
+    threshold: 50
+    enabled: true
+
+  maximum_repeated_line_ratio:
+    threshold: 0.30
+    enabled: true
+
+  maximum_repeated_word_ratio:
+    threshold: 0.20
+    enabled: true
+
+  maximum_non_alphanumeric_ratio:
+    threshold: 0.30
+    enabled: true
+
+  minimum_alphabetic_ratio:
+    threshold: 0.50
+    enabled: true
+
+quality_scoring:
+
+  weights:
+    minimum_characters: 0.15
+    minimum_words: 0.20
+    repeated_line_ratio: 0.20
+    repeated_word_ratio: 0.15
+    non_alphanumeric_ratio: 0.15
+    alphabetic_ratio: 0.15
+
+  approval_threshold: 0.80
+
+policy:
+
+  reject_empty_documents: true
+
+  automatic_training_approval: false
+
+  rule: >
+    Passing quality checks does not automatically approve a
+    document for training. Usage review, deduplication, and
+    contamination checks remain separate mandatory stages.

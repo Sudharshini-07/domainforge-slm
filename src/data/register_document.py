@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from src.data.quality import evaluate_quality
 import argparse
 import hashlib
 import json
@@ -227,6 +227,10 @@ def build_manifest_record(
             "Document is empty after normalization."
         )
 
+    quality_result = evaluate_quality(
+        normalized_text
+    )
+
     content_hash = compute_content_hash(
         normalized_text
     )
@@ -266,11 +270,21 @@ def build_manifest_record(
         "pipeline_version": PIPELINE_VERSION,
         "processing_status": "registered",
         "quality": {
-            "score": None,
+            "score": quality_result["score"],
+            "passed": quality_result["passed"],
             "language_verified": False,
-            "minimum_length_passed": False,
-            "boilerplate_ratio": None,
-        },
+            "minimum_length_passed": (
+                quality_result["checks"][
+                    "minimum_characters"
+                    ]
+                    and quality_result["checks"][
+                        "minimum_words"
+                        ]
+                    ),
+                    "boilerplate_ratio": None,
+                    "metrics": quality_result["metrics"],
+                    "checks": quality_result["checks"],
+                },
         "deduplication": {
             "exact_duplicate": False,
             "near_duplicate": False,

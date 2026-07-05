@@ -22,11 +22,11 @@
     "usage_status",
     "usage_note",
     "content_hash",
+    "normalized_artifact_path",
     "pipeline_version",
     "processing_status",
     "quality",
     "deduplication",
-    "normalized_artifact_path",
     "contamination",
     "statistics"
   ],
@@ -36,7 +36,6 @@
       "type": "string",
       "minLength": 1
     },
-    
 
     "source_family": {
       "type": "string",
@@ -113,11 +112,11 @@
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
     },
-    
+
     "normalized_artifact_path": {
-        "type": "string",
-        "minLength": 1,
-        "pattern": "^data/interim/normalized/.+\\.txt$"
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^data/interim/normalized/.+\\.txt$"
     },
 
     "pipeline_version": {
@@ -141,27 +140,36 @@
     "quality": {
       "type": "object",
       "additionalProperties": false,
+
       "required": [
         "score",
+        "passed",
         "language_verified",
         "minimum_length_passed",
-        "boilerplate_ratio"
+        "boilerplate_ratio",
+        "metrics",
+        "checks"
       ],
+
       "properties": {
         "score": {
-          "type": [
-            "number",
-            "null"
-          ],
+          "type": "number",
           "minimum": 0,
           "maximum": 1
         },
+
+        "passed": {
+          "type": "boolean"
+        },
+
         "language_verified": {
           "type": "boolean"
         },
+
         "minimum_length_passed": {
           "type": "boolean"
         },
+
         "boilerplate_ratio": {
           "type": [
             "number",
@@ -169,6 +177,96 @@
           ],
           "minimum": 0,
           "maximum": 1
+        },
+
+        "metrics": {
+          "type": "object",
+          "additionalProperties": false,
+
+          "required": [
+            "character_count",
+            "word_count",
+            "repeated_line_ratio",
+            "repeated_word_ratio",
+            "non_alphanumeric_ratio",
+            "alphabetic_ratio"
+          ],
+
+          "properties": {
+            "character_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+
+            "word_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+
+            "repeated_line_ratio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+
+            "repeated_word_ratio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+
+            "non_alphanumeric_ratio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+
+            "alphabetic_ratio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+
+          "required": [
+            "minimum_characters",
+            "minimum_words",
+            "repeated_line_ratio",
+            "repeated_word_ratio",
+            "non_alphanumeric_ratio",
+            "alphabetic_ratio"
+          ],
+
+          "properties": {
+            "minimum_characters": {
+              "type": "boolean"
+            },
+
+            "minimum_words": {
+              "type": "boolean"
+            },
+
+            "repeated_line_ratio": {
+              "type": "boolean"
+            },
+
+            "repeated_word_ratio": {
+              "type": "boolean"
+            },
+
+            "non_alphanumeric_ratio": {
+              "type": "boolean"
+            },
+
+            "alphabetic_ratio": {
+              "type": "boolean"
+            }
+          }
         }
       }
     },
@@ -176,18 +274,22 @@
     "deduplication": {
       "type": "object",
       "additionalProperties": false,
+
       "required": [
         "exact_duplicate",
         "near_duplicate",
         "duplicate_of"
       ],
+
       "properties": {
         "exact_duplicate": {
           "type": "boolean"
         },
+
         "near_duplicate": {
           "type": "boolean"
         },
+
         "duplicate_of": {
           "type": [
             "string",
@@ -200,10 +302,12 @@
     "contamination": {
       "type": "object",
       "additionalProperties": false,
+
       "required": [
         "status",
         "matched_benchmark_ids"
       ],
+
       "properties": {
         "status": {
           "type": "string",
@@ -214,6 +318,7 @@
             "confirmed_overlap"
           ]
         },
+
         "matched_benchmark_ids": {
           "type": "array",
           "items": {
@@ -227,20 +332,24 @@
     "statistics": {
       "type": "object",
       "additionalProperties": false,
+
       "required": [
         "character_count",
         "word_count",
         "token_count"
       ],
+
       "properties": {
         "character_count": {
           "type": "integer",
           "minimum": 1
         },
+
         "word_count": {
           "type": "integer",
           "minimum": 1
         },
+
         "token_count": {
           "type": [
             "integer",

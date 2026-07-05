@@ -10,7 +10,7 @@
   "topic": "self_attention",
   "language": "en",
   "publication_or_update_date": null,
-  "retrieved_at": "2026-07-05T13:27:21.577298+00:00",
+  "retrieved_at": "2026-07-05T13:58:34.390545+00:00",
   "usage_status": "pending_review",
   "usage_note": "Pending source usage review.",
   "content_hash": "f0f5883d3fc90273b53470c1c1f2369f7a4120f3d0aa116edf8bd81cda541d45",
@@ -18,10 +18,27 @@
   "pipeline_version": "0.1.0",
   "processing_status": "registered",
   "quality": {
-    "score": null,
+    "score": 1.0,
+    "passed": true,
     "language_verified": false,
-    "minimum_length_passed": false,
-    "boilerplate_ratio": null
+    "minimum_length_passed": true,
+    "boilerplate_ratio": null,
+    "metrics": {
+      "character_count": 2136,
+      "word_count": 293,
+      "repeated_line_ratio": 0.0,
+      "repeated_word_ratio": 0.05460750853242321,
+      "non_alphanumeric_ratio": 0.02066340402392605,
+      "alphabetic_ratio": 0.9793365959760739
+    },
+    "checks": {
+      "minimum_characters": true,
+      "minimum_words": true,
+      "repeated_line_ratio": true,
+      "repeated_word_ratio": true,
+      "non_alphanumeric_ratio": true,
+      "alphabetic_ratio": true
+    }
   },
   "deduplication": {
     "exact_duplicate": false,
