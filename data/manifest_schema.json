@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://domainforge-slm.local/schemas/manifest.schema.json",
+  "title": "DomainForge-SLM Document Manifest Record",
+  "description": "Machine-enforced schema for document-level provenance and processing metadata.",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "document_id",
+    "source_family",
+    "source_name",
+    "source_type",
+    "source_reference",
+    "title",
+    "domain",
+    "subdomain",
+    "topic",
+    "language",
+    "publication_or_update_date",
+    "retrieved_at",
+    "usage_status",
+    "usage_note",
+    "content_hash",
+    "pipeline_version",
+    "processing_status",
+    "quality",
+    "deduplication",
+    "normalized_artifact_path",
+    "contamination",
+    "statistics"
+  ],
+
+  "properties": {
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    
+
+    "source_family": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "source_name": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "source_type": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "source_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "domain": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "subdomain": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "topic": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "language": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "publication_or_update_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+
+    "retrieved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "usage_status": {
+      "type": "string",
+      "enum": [
+        "pending_review",
+        "approved",
+        "pilot_only",
+        "excluded"
+      ]
+    },
+
+    "usage_note": {
+      "type": "string"
+    },
+
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    
+    "normalized_artifact_path": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^data/interim/normalized/.+\\.txt$"
+    },
+
+    "pipeline_version": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "processing_status": {
+      "type": "string",
+      "enum": [
+        "registered",
+        "parsed",
+        "normalized",
+        "quality_checked",
+        "deduplicated",
+        "approved_for_training",
+        "rejected"
+      ]
+    },
+
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "language_verified",
+        "minimum_length_passed",
+        "boilerplate_ratio"
+      ],
+      "properties": {
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "language_verified": {
+          "type": "boolean"
+        },
+        "minimum_length_passed": {
+          "type": "boolean"
+        },
+        "boilerplate_ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+
+    "deduplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_duplicate",
+        "near_duplicate",
+        "duplicate_of"
+      ],
+      "properties": {
+        "exact_duplicate": {
+          "type": "boolean"
+        },
+        "near_duplicate": {
+          "type": "boolean"
+        },
+        "duplicate_of": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+
+    "contamination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "matched_benchmark_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_checked",
+            "clean",
+            "suspected",
+            "confirmed_overlap"
+          ]
+        },
+        "matched_benchmark_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "statistics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "character_count",
+        "word_count",
+        "token_count"
+      ],
+      "properties": {
+        "character_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "word_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "token_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

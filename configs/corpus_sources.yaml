@@ -1,0 +1,166 @@
+registry_version: "0.1.0"
+
+purpose: >
+  Define candidate source families for the DomainForge-SLM
+  domain-adaptive pretraining corpus. Inclusion in this registry
+  does not automatically authorize ingestion. Each source must
+  pass provenance, usage, quality, and contamination review.
+
+corpus_policy:
+  target_language:
+    - en
+
+  allowed_source_status:
+    - approved
+    - pilot_only
+
+  default_source_status: "candidate"
+
+  require_provenance: true
+  require_usage_review: true
+  require_domain_mapping: true
+  require_document_level_metadata: true
+
+  benchmark_separation:
+    enabled: true
+    rule: >
+      Benchmark test and challenge items must never be inserted
+      into the DAPT or instruction-tuning corpus.
+
+source_families:
+
+  open_access_research:
+    description: >
+      Openly accessible research papers and technical publications
+      relevant to AI, ML, deep learning, transformers, LLM systems,
+      retrieval, evaluation, and MLOps.
+
+    target_domains:
+      - machine_learning
+      - deep_learning
+      - transformers
+      - llm_engineering
+      - retrieval_systems
+      - evaluation_reliability
+      - mlops_deployment
+
+    candidate_sources:
+      - name: "arXiv"
+        source_type: "research_repository"
+        status: "candidate"
+        ingestion_method: "metadata_api_and_document_pipeline"
+        usage_review_required: true
+        notes: >
+          Paper-level licensing and version metadata must be
+          retained. Public accessibility alone must not be treated
+          as blanket permission for unrestricted reuse.
+
+  open_technical_documentation:
+    description: >
+      Technical documentation with clear provenance and reviewed
+      usage conditions.
+
+    target_domains:
+      - machine_learning
+      - deep_learning
+      - transformers
+      - llm_engineering
+      - retrieval_systems
+      - mlops_deployment
+
+    candidate_sources:
+      - name: "Hugging Face Documentation"
+        source_type: "technical_documentation"
+        status: "candidate"
+        ingestion_method: "approved_document_export_or_crawler"
+        usage_review_required: true
+
+      - name: "PyTorch Documentation"
+        source_type: "technical_documentation"
+        status: "candidate"
+        ingestion_method: "approved_document_export_or_crawler"
+        usage_review_required: true
+
+      - name: "scikit-learn Documentation"
+        source_type: "technical_documentation"
+        status: "candidate"
+        ingestion_method: "approved_document_export_or_crawler"
+        usage_review_required: true
+
+  open_educational_material:
+    description: >
+      High-quality educational material with explicit provenance
+      and acceptable reuse conditions.
+
+    target_domains:
+      - machine_learning
+      - deep_learning
+      - transformers
+
+    candidate_sources: []
+
+  curated_original_material:
+    description: >
+      Original domain explanations, reasoning examples, and
+      technical material created specifically for DomainForge-SLM.
+
+    target_domains:
+      - machine_learning
+      - deep_learning
+      - transformers
+      - llm_engineering
+      - retrieval_systems
+      - evaluation_reliability
+      - mlops_deployment
+
+    candidate_sources:
+      - name: "DomainForge Original Corpus"
+        source_type: "original_material"
+        status: "candidate"
+        ingestion_method: "internal_generation_and_review"
+        usage_review_required: false
+
+excluded_source_categories:
+
+  - name: "unreviewed_web_scrapes"
+    reason: >
+      Unknown provenance, inconsistent quality, and elevated
+      licensing and contamination risk.
+
+  - name: "benchmark_answer_pages"
+    reason: >
+      High benchmark contamination risk.
+
+  - name: "private_or_paywalled_material"
+    reason: >
+      Not eligible without explicit authorization.
+
+  - name: "unattributed_content_aggregations"
+    reason: >
+      Weak provenance and uncertain reuse status.
+
+document_metadata_requirements:
+
+  required_fields:
+    - document_id
+    - source_family
+    - source_name
+    - source_type
+    - source_reference
+    - title
+    - domain
+    - subdomain
+    - topic
+    - language
+    - publication_or_update_date
+    - retrieved_at
+    - usage_status
+    - usage_note
+    - content_hash
+    - pipeline_version
+
+usage_status_values:
+  - pending_review
+  - approved
+  - pilot_only
+  - excluded

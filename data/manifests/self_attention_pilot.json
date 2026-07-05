@@ -1,0 +1,40 @@
+{
+  "document_id": "domainforge-original-corpus-f0f5883d3fc90273",
+  "source_family": "curated_original_material",
+  "source_name": "DomainForge Original Corpus",
+  "source_type": "original_material",
+  "source_reference": "internal:pilot:self-attention-v1",
+  "title": "Self-Attention Engineering Fundamentals",
+  "domain": "transformers",
+  "subdomain": "attention_mechanisms",
+  "topic": "self_attention",
+  "language": "en",
+  "publication_or_update_date": null,
+  "retrieved_at": "2026-07-05T13:27:21.577298+00:00",
+  "usage_status": "pending_review",
+  "usage_note": "Pending source usage review.",
+  "content_hash": "f0f5883d3fc90273b53470c1c1f2369f7a4120f3d0aa116edf8bd81cda541d45",
+  "normalized_artifact_path": "data/interim/normalized/domainforge-original-corpus-f0f5883d3fc90273.txt",
+  "pipeline_version": "0.1.0",
+  "processing_status": "registered",
+  "quality": {
+    "score": null,
+    "language_verified": false,
+    "minimum_length_passed": false,
+    "boilerplate_ratio": null
+  },
+  "deduplication": {
+    "exact_duplicate": false,
+    "near_duplicate": false,
+    "duplicate_of": null
+  },
+  "contamination": {
+    "status": "not_checked",
+    "matched_benchmark_ids": []
+  },
+  "statistics": {
+    "character_count": 2136,
+    "word_count": 293,
+    "token_count": null
+  }
+}
